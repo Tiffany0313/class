@@ -5,17 +5,11 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function ProductAdd({ insert, open, handleClose }) {
+export default function ProductAdd({ add, open, handleClose, readData }) {
     const [product, setProduct] = useState({ desc: "", price: "" });
 
     const handleClick = (e) => {
         setProduct({ ...product, [e.target.id]: e.target.value });
-    };
-
-    const update = () => {
-        insert(product);
-        handleClose();
-        setProduct({ desc: "", price: "" });
     };
 
     return (
@@ -57,7 +51,7 @@ export default function ProductAdd({ insert, open, handleClose }) {
             <DialogActions>
                 <Button onClick={handleClose}>取消</Button>
                 {/* <button onClick={update}>新增</button> */}
-                <Button variant="contained" onClick={update}>
+                <Button variant="contained" onClick={() => add(product)}>
                     新增
                 </Button>
             </DialogActions>
