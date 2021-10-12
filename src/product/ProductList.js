@@ -8,7 +8,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import Tab from "../ui/Tab";
-import AppMenu from "../ui/AppMenu";
+// import AppMenu from "../ui/AppMenu";
 import ProductAdd from "./ProductAdd";
 import ProductEdit from "./ProductEdit";
 import ProductDelete from "./ProductDelete";
@@ -28,14 +28,7 @@ export default function ProductList() {
         setSelectedIndex(index);
     };
 
-    //新增商品
-    const insert = (newProduct) => {
-        // console.log(newProduct);
-        // if (newProduct.desc !== "") {
-        setProducts((oldProducts) => [...oldProducts, newProduct]);
-        // }
-    };
-
+    //修改按鈕選取
     const handleEditSelected = (index, desc, price) => {
         setProduct({
             index: index,
@@ -44,16 +37,29 @@ export default function ProductList() {
         });
         handleEditOpen();
     };
-    const edit = ({ index, desc, price }) => {
-        products.splice(index, 1, { desc, price });
-        setProducts([...products]);
-        handleEditClose();
-    };
+
+    //刪除按鈕選取
     const [deleteSeleted, setDeleteDeleted] = useState();
     const handleDeleteSeleted = (index) => {
         setDeleteDeleted(index);
         handleDeleteOpen();
     };
+
+    //新增商品
+    const insert = (newProduct) => {
+        // console.log(newProduct);
+        // if (newProduct.desc !== "") {
+        setProducts((oldProducts) => [...oldProducts, newProduct]);
+        // }
+    };
+
+    //修改商品
+    const edit = ({ index, desc, price }) => {
+        products.splice(index, 1, { desc, price });
+        setProducts([...products]);
+        handleEditClose();
+    };
+
     //刪除商品
     const deleteP = (index) => {
         products.splice(index, 1); //刪除index位置且刪除一次
