@@ -29,6 +29,7 @@ export default function ProductList() {
     const handleListItemClick = (index) => {
         setSelectedIndex(index);
     };
+
     //新增開關
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
@@ -37,6 +38,7 @@ export default function ProductList() {
     const handleClose = () => {
         setOpen(false);
     };
+
     //修改開關
     const [editOpen, setEditOpen] = useState(false);
     const handleEditOpen = () => {
@@ -45,6 +47,7 @@ export default function ProductList() {
     const handleEditClose = () => {
         setEditOpen(false);
     };
+
     //刪除開關
     const [deleteOpen, setDeleteOpen] = useState(false);
     const handleDeleteOpen = () => {
@@ -64,6 +67,7 @@ export default function ProductList() {
         });
         handleEditOpen();
     };
+
     //刪除選取
     const [deleteSeleted, setDeleteDeleted] = useState();
     const handleDeleteSeleted = (index) => {
@@ -91,6 +95,7 @@ export default function ProductList() {
         // setProducts((oldProducts) => [...oldProducts, newProduct]);
         // }
     };
+
     //修改商品
     const edit = async ({ index, desc, price }) => {
         try {
@@ -106,6 +111,7 @@ export default function ProductList() {
         // setProducts([...products]);
         handleEditClose();
     };
+
     //刪除商品
     const deleteP = async (index) => {
         try {
