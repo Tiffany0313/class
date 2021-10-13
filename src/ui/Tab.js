@@ -57,7 +57,7 @@ export default function BasicTabs({ setStatus }) {
         setValue(newValue);
     };
 
-    const handleSubmit = async function () {
+    const handleSubmit = async () => {
         try {
             await firebase.auth().signOut();
             setHint(true);

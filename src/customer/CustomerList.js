@@ -22,7 +22,7 @@ export default function CustomerList() {
     return (
         <>
             {/* <AppMenu /> */}
-            <Tab />
+            {/* <Tab /> */}
             {/* subheader="Employee list" aria-label="employee list" align="center" */}
             <List>
                 {customers.map((customer, index) => (
