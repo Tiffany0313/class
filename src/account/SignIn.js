@@ -10,7 +10,8 @@ import { AuthContext, STATUS } from "./AuthContext";
 export default function SignIn() {
     const authContext = useContext(AuthContext);
     const history = useHistory();
-
+    // 這裡呼叫authContext裡的setStatus，事實上是呼叫App的setStatus
+    // 可是不需要從App傳props到Main，再從Main傳進SignIn
     const changeStatus = () => {
         authContext.setStatus(STATUS.signUp);
     };
