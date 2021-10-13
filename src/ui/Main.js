@@ -10,28 +10,27 @@ import SignIn from "../account/SignIn";
 import firebase from "firebase/app";
 
 export default function Main() {
-    const [status, setStatus] = useState("signIn");
-    const user = firebase.auth().currentUser;
+  const [status, setStatus] = useState("signIn");
+  const user = firebase.auth().currentUser;
 
-    // const history = useHistory();
-    // useHistory 可以直接指定某頁面
-    // const handleClick = () => {
-    //   history.push("/product");
-    // };
-
-    return (
-        <>
-            {user ? <Tab setStatus={setStatus} /> : ""}
-            {/* && history.push("/product") */}
-            {status === "signIn" ? (
-                <SignIn setStatus={setStatus} />
-            ) : status === "signUp" ? (
-                <SignUp setStatus={setStatus} />
-            ) : (
-                ""
-                // <SignOut setStatus={setStatus} />
-            )}
-            {/* <div
+  // const history = useHistory();
+  // useHistory 可以直接指定某頁面
+  // const handleClick = () => {
+  //   history.push("/product");
+  // };
+  return (
+    <>
+      {user ? <Tab setStatus={setStatus} /> : ""}
+      {/* && history.push("/product") */}
+      {status === "signIn" ? (
+        <SignIn setStatus={setStatus} />
+      ) : status === "signUp" ? (
+        <SignUp setStatus={setStatus} />
+      ) : (
+        ""
+        // <SignOut setStatus={setStatus} />
+      )}
+      {/* <div
         style={{
           height: "90vh",
           display: "flex",
@@ -43,6 +42,6 @@ export default function Main() {
           Product
         </Button>
       </div> */}
-        </>
-    );
+    </>
+  );
 }

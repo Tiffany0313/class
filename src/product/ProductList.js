@@ -14,7 +14,7 @@ import ProductAdd from "./ProductAdd";
 import ProductEdit from "./ProductEdit";
 import ProductDelete from "./ProductDelete";
 
-import { db } from "../settings/firebaseConfig";
+import { db } from "../settings/FirebaseConfig";
 
 export default function ProductList() {
     const [products, setProducts] = useState([

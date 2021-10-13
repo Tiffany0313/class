@@ -15,7 +15,7 @@ import EmployeeList from "../employee/EmployeeList";
 import CustomerList from "../customer/CustomerList";
 import firebase from "firebase/app";
 
-function TabPanel(props) {
+const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
     console.log(children);
     return (
@@ -42,8 +42,7 @@ TabPanel.propTypes = {
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired
 };
-
-function a11yProps(index) {
+const a11yProps = (index) => {
     return {
         id: `simple-tab-${index}`,
         "aria-controls": `simple-tabpanel-${index}`
