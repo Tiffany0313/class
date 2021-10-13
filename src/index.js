@@ -7,6 +7,7 @@ import Main from "./ui/Main";
 import ProductList from "./product/ProductList";
 import EmployeeList from "./employee/EmployeeList";
 import CustomerList from "./customer/CustomerList";
+import ForgetPassword from "./account/ForgetPassword";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -19,9 +20,9 @@ const theme = createTheme({
       // contrastText: will be calculated to contrast with palette.primary.main
     },
     secondary: {
-      main: "#ffb300",
+      main: "#ffb300"
       // dark: will be calculated from palette.secondary.main,
-      contrastText: "#ffcc00"
+      // contrastText: "#ffcc00"
     },
     text: {
       primary: "rgba(0, 0, 0,0.87)",
@@ -48,6 +49,7 @@ ReactDOM.render(
           <Route exact path="/product" component={ProductList} />
           <Route exact path="/employee" component={EmployeeList} />
           <Route exact path="/customer" component={CustomerList} />
+          <Route exact path="/forgetpassword" component={ForgetPassword} />
         </Switch>
       </Router>
     </ThemeProvider>
@@ -55,9 +57,12 @@ ReactDOM.render(
   rootElement
 );
 
-// 1. 讀取商品資料時，讓商品依價格排序
-// 2. 範例完成了新增，請完成刪除及修改。
+// 1. 想想看，你們的系統要如何處理登入、登出? OK
 
-// 在firestore裡，修改或刪除文件，需要有document的id，
-// 因為我們產生document的時候，是利用自動產生的id，
-// 所以，在讀取資料時也要同時取得id。
+// 2. 如果一開始一定要登入，那要怎麼修改你們的程式? OK
+
+// 3. 如何處理登出? OK
+
+// 4. 如何處理自動登入?  還在想??
+
+// 5. 如何處理忘記密碼? OK

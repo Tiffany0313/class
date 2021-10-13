@@ -1,16 +1,9 @@
-import './App.css';
-// import Click from './Click';
-import ProductList from './ProductList';
+import "./styles.css";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      {/* <header className="App-header"> */}
-      {/* <Click /> */}
-      <ProductList />
-      {/* </header> */}
+      <h1>MUI Template</h1>
     </div>
   );
 }
-
-export default App;

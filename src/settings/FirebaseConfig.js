@@ -15,7 +15,7 @@ const firebaseConfig = {
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
 const db = firebase.firestore();
 
-export { db };
+export { db, firebaseConfig };
 
 // v8.10.0
 // import firebase from "firebase";
