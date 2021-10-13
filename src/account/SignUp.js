@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Alert, Stack, Button, TextField } from "@mui/material";
 import firebase from "firebase/app";
 import "firebase/auth";
 
-export default function SignUp({ setStatus }) {
+import { AuthContext, STATUS } from "./AuthContext";
+
+export default function SignUp() {
+    const authContext = useContext(AuthContext);
+
     const changeStatus = () => {
-        setStatus("signIn");
+        authContext.setStatus(STATUS.signIn);
     };
     const [account, setAccount] = useState({
         email: "",
@@ -32,7 +36,7 @@ export default function SignUp({ setStatus }) {
                 setHint("true");
                 setTimeout(() => {
                     setHint("false");
-                    setStatus("signIn");
+                    authContext.setStatus(STATUS.signIn);
                 }, 1000);
             }
             setAccount({ email: "", password: "", displayName: "" });

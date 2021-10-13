@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { List, ListItem, ListItemText } from "@mui/material";
 
 // import Button from "@mui/material/Button";
-import Fab from '@mui/material/Fab';
+import { Fab } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CircularProgress from "@mui/material/CircularProgress";
 
-// import Tab from "../ui/Tab";
-// import AppMenu from "../ui/AppMenu";
 import ProductAdd from "./ProductAdd";
 import ProductEdit from "./ProductEdit";
 import ProductDelete from "./ProductDelete";
 
 import { db } from "../settings/FirebaseConfig";
+import { AuthContext, STATUS } from "../account/AuthContext";
 
 export default function ProductList() {
+    const authContext = useContext(AuthContext);
+    // if (authContext.status === STATUS.signIn) {
+    //   alert("還沒登入");
+    // }
     const [products, setProducts] = useState([
         // { desc: "iPad", price: 20000 },
         // { desc: "iPhone X", price: 30000 },
@@ -216,21 +219,25 @@ export default function ProductList() {
     );
     return (
         <>
-            {/* <AppMenu /> */}
-            {/* <Tab /> */}
-            {!isLoading ? (
-                <ProductListComponent />
+            {authContext.status === STATUS.signOut ? (
+                <>
+                    {!isLoading ? (
+                        <ProductListComponent />
+                    ) : (
+                        <div
+                            style={{
+                                height: "90vh",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }}
+                        >
+                            <CircularProgress color="secondary" />
+                        </div>
+                    )}
+                </>
             ) : (
-                <div
-                    style={{
-                        height: "90vh",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}
-                >
-                    <CircularProgress color="secondary" />
-                </div>
+                ""
             )}
         </>
     );

@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Alert, Stack, Button, TextField } from "@mui/material";
 import Link from "@mui/material/Link";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { useHistory } from "react-router-dom";
+import { AuthContext, STATUS } from "./AuthContext";
 
-export default function SignIn({ setStatus }) {
+export default function SignIn() {
+    const authContext = useContext(AuthContext);
     const history = useHistory();
+
     const changeStatus = () => {
-        setStatus("signUp");
+        authContext.setStatus(STATUS.signUp);
     };
 
     const [account, setAccount] = useState({
@@ -35,7 +38,7 @@ export default function SignIn({ setStatus }) {
                 setHint("true");
                 setTimeout(() => {
                     setHint("false");
-                    setStatus("signOut");
+                    authContext.setStatus(STATUS.signOut);
                 }, 1000);
                 // console.log(res.user.displayName);
             }

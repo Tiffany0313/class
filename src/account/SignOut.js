@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Button } from "@mui/material";
 
 import firebase from "firebase/app";
 import "firebase/auth";
 
-export default function SignOut({ setStatus }) {
+import { AuthContext, STATUS } from "./AuthContext";
+
+export default function SignOut() {
+    const authContext = useContext(AuthContext);
     const [message, setMessage] = useState("");
 
     const handleSubmit = async function () {
@@ -13,7 +16,7 @@ export default function SignOut({ setStatus }) {
 
         try {
             await firebase.auth().signOut();
-            setStatus("signIn");
+            authContext.setStatus(STATUS.signIn);
         } catch (e) {
             setMessage(e);
         }

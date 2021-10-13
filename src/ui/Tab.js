@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
-
 import IconButton from "@mui/material/IconButton";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { deepPurple } from "@mui/material/colors";
@@ -15,9 +14,10 @@ import EmployeeList from "../employee/EmployeeList";
 import CustomerList from "../customer/CustomerList";
 import firebase from "firebase/app";
 
-const TabPanel = (props) => {
+import { AuthContext, STATUS } from "../account/AuthContext";
+
+function TabPanel(props) {
     const { children, value, index, ...other } = props;
-    console.log(children);
     return (
         <div
             role="tabpanel"
@@ -42,28 +42,32 @@ TabPanel.propTypes = {
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired
 };
-const a11yProps = (index) => {
+
+function a11yProps(index) {
     return {
         id: `simple-tab-${index}`,
         "aria-controls": `simple-tabpanel-${index}`
     };
 }
 
-export default function BasicTabs({ setStatus }) {
-    const [value, setValue] = useState(0);
+export default function BasicTabs() {
+    const authContext = useContext(AuthContext);
     const [hint, setHint] = useState(false);
+
+    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async function () {
         try {
             await firebase.auth().signOut();
+
             setHint(true);
             setTimeout(() => {
                 setHint(false);
-                setStatus("signIn");
+                authContext.setStatus(STATUS.signIn);
             }, 2000);
         } catch (e) {
             console.log(e);
@@ -72,7 +76,7 @@ export default function BasicTabs({ setStatus }) {
 
     return (
         <>
-            <Box sx={{ width: "100%" }}>
+            <Box sx={{ width: "100%", position: "relative", top: 0, left: 0 }}>
                 <AppBar position="sticky">
                     <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                         <Tabs

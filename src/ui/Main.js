@@ -1,34 +1,28 @@
-import React, { useState } from "react";
-// import AppMenu from "./AppMenu";
+import React, { useContext } from "react";
 import Tab from "./Tab";
 import SignUp from "../account/SignUp";
 import SignIn from "../account/SignIn";
 // import Button from "@mui/material/Button";
-
+import { AuthContext, STATUS } from "../account/AuthContext";
 // import { useHistory } from "react-router-dom";
 
-import firebase from "firebase/app";
-
 export default function Main() {
-  const [status, setStatus] = useState("signIn");
-  const user = firebase.auth().currentUser;
+  const authContext = useContext(AuthContext);
 
   // const history = useHistory();
   // useHistory 可以直接指定某頁面
   // const handleClick = () => {
   //   history.push("/product");
   // };
+
   return (
     <>
-      {user ? <Tab setStatus={setStatus} /> : ""}
-      {/* && history.push("/product") */}
-      {status === "signIn" ? (
-        <SignIn setStatus={setStatus} />
-      ) : status === "signUp" ? (
-        <SignUp setStatus={setStatus} />
+      {authContext.status === STATUS.signIn ? (
+        <SignIn />
+      ) : authContext.status === STATUS.signUp ? (
+        <SignUp />
       ) : (
-        ""
-        // <SignOut setStatus={setStatus} />
+        <Tab />
       )}
       {/* <div
         style={{
