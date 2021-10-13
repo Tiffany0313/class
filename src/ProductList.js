@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import List from "@mui/material/List";
 import { ListItem, ListItemText } from "@mui/material";
 
-import Button from "@mui/material/Button";
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+// import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -96,11 +98,7 @@ export default function ProductList() {
     return (
         <>
             <List subheader="Product list" aria-label="product list">
-                <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <Button variant="outlined" onClick={handleOpen}>
-                        新增商品
-                    </Button>
-                </div>
+
                 {products.map((product, index) => (
                     <ListItem
                         cursor="pointer"
@@ -129,6 +127,14 @@ export default function ProductList() {
                         </IconButton>
                     </ListItem>
                 ))}
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    {/* <Button variant="outlined" onClick={handleOpen}>
+                        新增商品
+                    </Button> */}
+                    <Fab color="primary" aria-label="add" onClick={handleOpen}>
+                        <AddIcon />
+                    </Fab>
+                </div>
                 <ProductAdd insert={insert} open={open} handleClose={handleClose} />
                 <ProductEdit
                     edit={edit}
