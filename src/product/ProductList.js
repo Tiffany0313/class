@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import { List, ListItem, ListItemText } from "@mui/material";
 
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -162,11 +164,7 @@ export default function ProductList() {
     const ProductListComponent = () => (
         <List>
             {/* subheader="Product list" aria-label="product list" align="center" */}
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Button variant="outlined" onClick={handleOpen}>
-                    新增商品
-                </Button>
-            </div>
+
             {products.map((product, index) => (
                 <ListItem
                     key={index}
@@ -194,6 +192,14 @@ export default function ProductList() {
                     </IconButton>
                 </ListItem>
             ))}
+            <div style={{ display: "flex", justifyContent: "flex-end", marginRight: 20 }}>
+                {/* <Button variant="outlined" onClick={handleOpen}>
+                        新增商品
+                    </Button> */}
+                <Fab color="primary" aria-label="add" onClick={handleOpen}>
+                    <AddIcon />
+                </Fab>
+            </div>
             <ProductAdd
                 add={add}
                 open={open}
