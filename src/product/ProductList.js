@@ -8,13 +8,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CircularProgress from "@mui/material/CircularProgress";
 
-import Tab from "../ui/Tab";
+// import Tab from "../ui/Tab";
 // import AppMenu from "../ui/AppMenu";
 import ProductAdd from "./ProductAdd";
 import ProductEdit from "./ProductEdit";
 import ProductDelete from "./ProductDelete";
 
-import { db } from "../settings/FirebaseConfig";
+import { db } from "../settings/firebaseConfig";
 
 export default function ProductList() {
     const [products, setProducts] = useState([
@@ -29,7 +29,6 @@ export default function ProductList() {
     const handleListItemClick = (index) => {
         setSelectedIndex(index);
     };
-
     //新增開關
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
@@ -38,7 +37,6 @@ export default function ProductList() {
     const handleClose = () => {
         setOpen(false);
     };
-
     //修改開關
     const [editOpen, setEditOpen] = useState(false);
     const handleEditOpen = () => {
@@ -47,7 +45,6 @@ export default function ProductList() {
     const handleEditClose = () => {
         setEditOpen(false);
     };
-
     //刪除開關
     const [deleteOpen, setDeleteOpen] = useState(false);
     const handleDeleteOpen = () => {
@@ -67,7 +64,6 @@ export default function ProductList() {
         });
         handleEditOpen();
     };
-
     //刪除選取
     const [deleteSeleted, setDeleteDeleted] = useState();
     const handleDeleteSeleted = (index) => {
@@ -95,13 +91,12 @@ export default function ProductList() {
         // setProducts((oldProducts) => [...oldProducts, newProduct]);
         // }
     };
-
     //修改商品
     const edit = async ({ index, desc, price }) => {
         try {
             await db.collection("product").doc(products[index].id).set({
                 desc: desc,
-                price: parseInt(price, 10)
+                price: price
             });
             await readData();
         } catch (e) {
@@ -111,7 +106,6 @@ export default function ProductList() {
         // setProducts([...products]);
         handleEditClose();
     };
-
     //刪除商品
     const deleteP = async (index) => {
         try {
@@ -217,7 +211,7 @@ export default function ProductList() {
     return (
         <>
             {/* <AppMenu /> */}
-            <Tab />
+            {/* <Tab /> */}
             {!isLoading ? (
                 <ProductListComponent />
             ) : (
