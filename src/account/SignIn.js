@@ -32,6 +32,7 @@ export default function SignIn() {
             const session = await firebase
                 .auth()
                 .setPersistence(firebase.auth.Auth.Persistence.SESSION);
+            console.log(session)
             const res = await firebase
                 .auth()
                 .signInWithEmailAndPassword(account.email, account.password);

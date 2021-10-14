@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { AuthContext, STATUS } from "./account/AuthContext";
+import FileUpload from "./ui/FileUpload";
 
 const theme = createTheme({
   palette: {

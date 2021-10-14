@@ -4,6 +4,7 @@ import SignUp from "../account/SignUp";
 import SignIn from "../account/SignIn";
 // import Button from "@mui/material/Button";
 import { AuthContext, STATUS } from "../account/AuthContext";
+import FileUpload from "./FileUpload";
 // import { useHistory } from "react-router-dom";
 
 export default function Main() {
@@ -22,7 +23,10 @@ export default function Main() {
       ) : authContext.status === STATUS.signUp ? (
         <SignUp />
       ) : (
-        <Tab />
+        <>
+          <Tab />
+          <FileUpload />
+        </>
       )}
       {/* <div
         style={{
