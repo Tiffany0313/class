@@ -98,7 +98,7 @@ export default function ProductList() {
         try {
             await db.collection("product").doc(products[index].id).set({
                 desc: desc,
-                price: price
+                price: parseInt(price, 10)
             });
             await readData();
         } catch (e) {
