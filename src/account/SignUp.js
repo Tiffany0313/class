@@ -37,9 +37,9 @@ export default function SignUp() {
                 setTimeout(() => {
                     setHint("false");
                     authContext.setStatus(STATUS.signIn);
+                    setAccount({ email: "", password: "", displayName: "" });
                 }, 1000);
             }
-            setAccount({ email: "", password: "", displayName: "" });
         } catch (e) {
             setMessage(e);
         }
