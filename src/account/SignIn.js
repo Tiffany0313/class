@@ -36,10 +36,10 @@ export default function SignIn({ setStatus }) {
                 setTimeout(() => {
                     setHint("false");
                     setStatus("signOut");
+                    setAccount({ email: "", password: "", displayName: "" });
                 }, 1000);
                 // console.log(res.user.displayName);
             }
-            setAccount({ email: "", password: "", displayName: "" });
             return res;
         } catch (e) {
             setMessage(e);
