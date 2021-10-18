@@ -11,7 +11,6 @@ import firebase from "firebase/app";
 
 export default function Main() {
   const [status, setStatus] = useState("signIn");
-  const user = firebase.auth().currentUser;
 
   // const history = useHistory();
   // useHistory 可以直接指定某頁面
@@ -20,14 +19,13 @@ export default function Main() {
   // };
   return (
     <>
-      {user ? <Tab setStatus={setStatus} /> : ""}
       {/* && history.push("/product") */}
       {status === "signIn" ? (
         <SignIn setStatus={setStatus} />
       ) : status === "signUp" ? (
         <SignUp setStatus={setStatus} />
       ) : (
-        ""
+        <Tab setStatus={setStatus} />
         // <SignOut setStatus={setStatus} />
       )}
       {/* <div
