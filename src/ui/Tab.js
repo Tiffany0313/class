@@ -12,7 +12,11 @@ export default function ColorTabs() {
         <AppBar position="sticky">
             <Box sx={{ width: "100%" }}>
                 <Tabs
-                    value={history.location.pathname}
+                    value={
+                        history.location.pathname === '/'
+                            ? false
+                            : history.location.pathname
+                    }
                     textColor="inherit"
                     indicatorColor="secondary"
                     centered
