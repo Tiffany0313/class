@@ -13,9 +13,9 @@ export default function ColorTabs() {
             <Box sx={{ width: "100%" }}>
                 <Tabs
                     value={
-                        history.location.pathname
-                        // ? history.location.pathname
-                        // : false
+                        history.location.pathname === '/'
+                            ? false
+                            : history.location.pathname
                     }
                     textColor="inherit"
                     indicatorColor="secondary"
