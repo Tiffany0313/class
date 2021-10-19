@@ -1,24 +1,27 @@
 import React from "react";
 // import AppMenu from "./AppMenu";
 import Tab from "./Tab";
-import Button from "@mui/material/Button";
+import { Button, Box } from "@mui/material";
 
 import { useHistory } from "react-router-dom";
 
 export default function Main() {
     const history = useHistory();
     // useHistory 可以直接指定某頁面
-    const handleClick = () => {
-        history.push("/product");
+    const handleClick = (link) => {
+        history.push(link);
     };
 
     return (
-        <div>
+        <Box>
             {/* <AppMenu /> */}
             <Tab />
-            <Button variant="contained" color="secondary" onClick={handleClick}>
+            <Button variant="contained" color="primary" onClick={() => handleClick("/product")}>
                 Product
             </Button>
-        </div>
+            <Button variant="contained" color="secondary" onClick={() => handleClick("/employee")}>
+                Employee
+            </Button>
+        </Box>
     );
 }
