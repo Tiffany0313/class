@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Alert, Stack, Button, TextField } from "@mui/material";
 import Link from "@mui/material/Link";
@@ -22,6 +22,7 @@ export default function SignIn({ setStatus }) {
         setAccount({ ...account, [e.target.name]: e.target.value });
     };
     const [hint, setHint] = useState("false");
+    let wait;
     const handleSubmit = async () => {
         setMessage("");
         try {
@@ -33,7 +34,7 @@ export default function SignIn({ setStatus }) {
                 .signInWithEmailAndPassword(account.email, account.password);
             if (res) {
                 setHint("true");
-                setTimeout(() => {
+                wait = setTimeout(() => {
                     setHint("false");
                     setStatus("signOut");
                     setAccount({ email: "", password: "", displayName: "" });
@@ -50,6 +51,11 @@ export default function SignIn({ setStatus }) {
         history.push("/forgetpassword");
     };
 
+    useEffect(() => {
+        return () => {
+            clearTimeout(wait)
+        }
+    }, [wait])
     return (
         <div
             style={{
